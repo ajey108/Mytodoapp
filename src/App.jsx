@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const App = () => {
   const [input, setInput] = useState("");
-  console.log(input);
-  const [todo, setTodo] = useState([]);
-  console.log(todo);
+
+  const [todo, setTodo] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todo));
+  }, [todo]);
 
   //inputHandler
   const inputHandler = (e) => {
@@ -40,7 +46,10 @@ const App = () => {
           {todo.map((item, index) => {
             return (
               <li key={index}>
+                <input id="check" type="checkbox" />
+
                 {item}
+
                 <span onClick={() => deleteTodo(index)}>X</span>
               </li>
             );
