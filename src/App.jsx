@@ -12,6 +12,10 @@ const App = () => {
 
   //addTodo
   const addTodo = () => {
+    if (input === "") {
+      alert("Please Enter Todo");
+      return;
+    }
     setTodo([input, ...todo]);
     setInput("");
   };
