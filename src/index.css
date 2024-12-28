@@ -1,40 +1,122 @@
-* {
+/* CSS for Todo App */
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background: #231f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main {
+  background: #313131;
+
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
 }
 
 h1 {
+  font-size: 2rem;
+  color: #06e206;
   text-align: center;
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .todoContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.todoList {
+input[type="text"] {
   padding: 10px;
-  position: absolute;
-  top: 50px;
-  list-style-type: none;
-
-  width: 40%;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
-.todoList li {
-  padding: 20px;
-  border: 1px solid #5a5353;
+input[type="text"]:focus {
+  border-color: #007bff;
 }
 
-span {
+button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  position: absolute;
-  left: 500px;
+  transition: background-color 0.3s;
 }
 
-#check {
+button:hover {
+  background-color: #0056b3;
+}
+
+ul.todoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.todoList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: transform 0.2s;
+}
+
+ul.todoList li:hover {
+  transform: translateY(-2px);
+}
+
+ul.todoList li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+ul.todoList li span {
+  color: #ff4d4d;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+ul.todoList li span:hover {
+  color: #e60000;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  ul.todoList li {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }
