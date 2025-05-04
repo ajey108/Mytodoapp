@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 const App = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string | number>("");
 
-  const [todo, setTodo] = useState(() => {
+  const [todo, setTodo] = useState<string | number[]>(() => {
     const savedTodos = localStorage.getItem("todos");
-    return savedTodos ? JSON.parse(savedTodos) : [];
+    return savedTodos ? JSON.parse(savedTodos) : ([] as string[]);
   });
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const App = () => {
   }, [todo]);
 
   //inputHandler
-  const inputHandler = (e) => {
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
@@ -27,7 +27,7 @@ const App = () => {
   };
 
   //deleteTodo
-  const deleteTodo = (delIndex) => {
+  const deleteTodo = (delIndex: number) => {
     setTodo(todo.filter((item, index) => index !== delIndex));
   };
 
